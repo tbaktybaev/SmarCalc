@@ -43,7 +43,7 @@ s21_calc.a:
 	rm *.o
 
 test: s21_calc.a
-	$(CC) $(CFLAG) tests.c s21_calc.a $(TEST_FLAGS) -o test #-I/opt/homebrew/include 
+	$(CC) $(CFLAG) tests.c s21_calc.a $(TEST_FLAGS) -o test -I/opt/homebrew/include 
 	./test
 
 
@@ -60,7 +60,7 @@ style:
 
 
 gcov_report: s21_calc.a test
-	$(CC) $(CFLAG) tests.c $(BACKEND_FILES) s21_calc.a $(TEST_FLAGS) $(GCOVFLAGS) -o test #-I/opt/homebrew/include -L/opt/homebrew/check -lcheck
+	$(CC) $(CFLAG) tests.c $(BACKEND_FILES) s21_calc.a $(TEST_FLAGS) $(GCOVFLAGS) -o test -I/opt/homebrew/include 
 	./test
 	lcov -t tests.c -o test.info -c -d .
 	genhtml -o test_html test.info
